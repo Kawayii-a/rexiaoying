@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青岛热岛效应可视化</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <h1>🌊 青岛热岛效应可视化</h1>
+            <p class="subtitle">基于多指标分析的怕热指数地图</p>
+        </div>
+        
+        <div class="info-panel">
+            <h2>📊 关于数据</h2>
+            <p>本可视化展示了青岛市各区的<strong>"怕热指数"</strong>，该指数综合考虑了以下因素：</p>
+            <ul>
+                <li>🏙️ <strong>人口密度</strong>：人口集中度</li>
+                <li>🌡️ <strong>夏季平均温度</strong>：7-9月平均气温</li>
+                <li>🌳 <strong>植被覆盖率</strong>：绿地覆盖比例</li>
+                <li>🏗️ <strong>建筑密度</strong>：建筑占地比例</li>
+            </ul>
+            
+            <div class="map-controls-info">
+                <p style="margin-top: 15px; font-weight: bold;">🗺️ 地图控制：</p>
+                <p style="font-size: 13px; margin-top: 5px;">点击地图<strong>右上角</strong>的图层按钮可切换底图：</p>
+                <ul style="font-size: 12px; margin-top: 8px; padding-left: 20px;">
+                    <li>OpenTopoMap - 地形图（默认）</li>
+                    <li>OpenStreetMap - 标准地图</li>
+                    <li>Esri街道图 - 详细道路</li>
+                    <li>Esri地形图 - 包含等高线</li>
+                </ul>
+            </div>
+            
+            <p class="legend-text">颜色说明：</p>
+            <div class="color-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #238B45;"></span>
+                    <span>凉爽 (低指数)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #FFEDA0;"></span>
+                    <span>中等</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #FC4E2A;"></span>
+                    <span>较热</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #800026;"></span>
+                    <span>怕热 (高指数)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chatbot-panel">
+            <h2>🤖 智能问答</h2>
+            <p>您可以询问各区怕热指数相关问题，例如：</p>
+            <ul class="example-questions">
+                <li>"市南区怕热指数是多少？"</li>
+                <li>"哪个区最怕热？"</li>
+                <li>"最凉爽的区是哪个？"</li>
+                <li>"黄岛区的情况如何？"</li>
+            </ul>
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="userInput" placeholder="输入您的问题..." autocomplete="off">
+                    <button id="sendBtn">发送</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="download-panel">
+            <button id="downloadBtn" class="download-btn">📥 下载数据 (CSV)</button>
+            <p class="download-hint">下载包含所有区域热岛数据的CSV文件</p>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 青岛热岛效应可视化</p>
+            <p class="license">开源免费使用</p>
+        </div>
+    </div>
+
+    <div id="map"></div>
+    <div id="info-panel" class="map-info-panel">
+        <p>点击地图区域查看详细信息</p>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
